@@ -20,6 +20,7 @@ const AppProvider = ({ children }) => {
       } else {
         setError({ show: true, msg: data.Error })
       }
+      setLoading(false)
     } catch (error) {
       setLoading(false)
       console.log(error)
@@ -31,7 +32,7 @@ const AppProvider = ({ children }) => {
   }, [query])
 
   return (
-    <AppContext.Provider value={(loading, error, movies, query, setQuery)}>
+    <AppContext.Provider value={{ loading, error, movies, query, setQuery }}>
       {children}
     </AppContext.Provider>
   )
